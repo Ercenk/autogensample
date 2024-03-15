@@ -1,0 +1,17 @@
+version: '3'
+services:
+  proxy_and_code:
+    build: 
+      context: ./proxy_and_code
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - ollama
+
+  ollama:
+    build: 
+      context: ./ollama
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"

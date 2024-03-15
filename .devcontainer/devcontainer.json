@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+  "name": "Python 3",
+  "dockerComposeFile": "./docker-compose.yaml",
+  "service": "proxy_and_code",
+  "workspaceFolder": "/mnt/c/Users/ercenk/Projects/autogensample/src",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "njpwerner.autodocstring",
+        "ms-python.vscode-pylance",
+        "github.copilot-chat",
+        "github.copilot",
+        "mongodb.mongodb-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "installTools": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {
+      "version": "latest"
+    }
+  },
+  "postStartCommand": "ollama serve"
+}
