@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  localllm:
+    user: localllm
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # entrypoint script arguments below should match this
+        # If you change the models, you need to run docker compose with --build to force build
+        MODELS: "mistral,llama2"
+    # Comment out the following line if you do not have GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    volumes:
+      - ./scripts:/home/localllm/scripts
+    entrypoint: /home/localllm/scripts/serve-models.sh "mistral,llama2"

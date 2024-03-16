@@ -1,9 +1,10 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-  "name": "Python 3",
-  "dockerComposeFile": "./docker-compose.yaml",
-  "service": "proxy_and_code",
+  "name": "Autogen sample",
+  "dockerComposeFile": [
+    "../localllm/docker-compose.yaml",
+    "./docker-compose.workspace.yaml"
+  ],
+  "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "shutdownAction": "stopCompose",
   "remoteEnv": {
@@ -39,9 +40,6 @@
     },
     "ghcr.io/devcontainers/features/python:1": {
       "installTools": true,
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/poetry:2": {
       "version": "latest"
     }
   },
