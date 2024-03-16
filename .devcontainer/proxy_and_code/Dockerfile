@@ -13,6 +13,7 @@ RUN adduser autogen sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER autogen
 WORKDIR /home/autogen
+COPY ../../src .
 
 RUN pip install --upgrade pip
 RUN pip install litellm[proxy]

@@ -2,8 +2,8 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
   "name": "Python 3",
-  "dockerComposeFile": "./docker-compose.yaml",
-  "service": "proxy_and_code",
+  "dockerComposeFile": ["docker-compose.yaml", "docker-compose.workspace.yaml"],
+  "service": "workspace",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "shutdownAction": "stopCompose",
   "remoteEnv": {
