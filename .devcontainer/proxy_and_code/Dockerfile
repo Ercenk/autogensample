@@ -18,12 +18,3 @@ RUN pip install --upgrade pip
 RUN pip install litellm[proxy]
 # RUN pip install autogenra
 RUN pip install pyautogen[teachable,lmm,retrievechat,mathchat,blendsearch]
-
-
-
-
-
-
-
-
-

@@ -1,17 +1,30 @@
-version: '3'
+version: "3"
 services:
-  proxy_and_code:
-    build: 
-      context: ./proxy_and_code
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    depends_on:
-      - ollama
-
   ollama:
-    build: 
+    build:
       context: ./ollama
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"
+      - "11434:11434"
+    volumes:
+      - ./ollama/models:/root/.ollama
+      - ./scripts:/root/scripts
+      - ../src:/root/src:cached
+    entrypoint: /root/scripts/start-ollama.sh "mistral,llama2,phi2"
+    command: sleep infinity
+
+  proxy_and_code:
+    build:
+      context: ./proxy_and_code
+      dockerfile: Dockerfile
+    # create a port mapping for each model
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+      - "8002:8002"
+    volumes:
+      - ./scripts:/root/scripts
+    entrypoint: /root/scripts/start-proxies.sh "mistral,llama2,phi2"
+    command: sleep infinity
+    depends_on:
+      - ollama

@@ -18,14 +18,4 @@ RUN pip install --upgrade pip
 
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
-RUN ollama serve & sleep 2
-RUN ollama pull llama2 
-RUN ollama pull mistral
-
-
-
-
-
-
-
-
+RUN ollama serve & sleep 10 && ollama pull llama2 && ollama pull mistral

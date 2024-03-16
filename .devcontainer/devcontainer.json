@@ -4,8 +4,11 @@
   "name": "Python 3",
   "dockerComposeFile": "./docker-compose.yaml",
   "service": "proxy_and_code",
-  "workspaceFolder": "/mnt/c/Users/ercenk/Projects/autogensample/src",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "shutdownAction": "stopCompose",
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -42,5 +45,5 @@
       "version": "latest"
     }
   },
-  "postStartCommand": "ollama serve"
+  "postStartCommand": ""
 }
