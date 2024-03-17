@@ -16,6 +16,7 @@ RUN adduser autogen sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER autogen
 WORKDIR /home/autogen
+COPY ../../src .
 
 # Set environment variable if needed
 # ENV OPENAI_API_KEY="{OpenAI-API-Key}"

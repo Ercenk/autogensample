@@ -1,0 +1,19 @@
+version: "3"
+services:
+  workspace:
+    build:
+      context: ./proxy_and_code
+      dockerfile: Dockerfile
+    # create a port mapping for each model
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+      - "8002:8002"
+    volumes:
+      - ./scripts:/root/scripts
+      - ../..:/workspaces:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: /root/scripts/start-proxies.sh "mistral,llama2,phi2"
+    command: sleep infinity
+    depends_on:
+      - ollama
