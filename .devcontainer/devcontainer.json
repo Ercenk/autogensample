@@ -1,14 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-  "name": "Autogen sample",
-  "dockerComposeFile": [
-    "../localllm/docker-compose.yaml",
-    "./docker-compose.workspace.yaml"
-  ],
-  "service": "app",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "shutdownAction": "stopCompose",
-  "remoteEnv": {
-    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  "name": "Python 3",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "autogen",
+  "workspaceFolder": "/workspaces",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "autogen",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
   },
   "customizations": {
     "vscode": {
@@ -19,29 +31,10 @@
         "github.copilot-chat",
         "github.copilot",
         "mongodb.mongodb-vscode",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "humao.rest-client"
       ]
     }
   },
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "installOhMyZsh": true,
-      "installOhMyZshConfig": true,
-      "upgradePackages": true,
-      "username": "vscode",
-      "userUid": "automatic",
-      "userGid": "automatic"
-    },
-    "ghcr.io/devcontainers/features/git:1": {
-      "ppa": true,
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "installTools": true,
-      "version": "latest"
-    }
-  },
-  "postStartCommand": ""
+  "remoteUser": "autogen"
 }
