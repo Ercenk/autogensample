@@ -3,7 +3,7 @@ from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 config_list = [
     {
         "model": "ollama/mistral",
-        "base_url": "http://localhost:8000/v1",
+        "base_url": "http://localhost:8040/v1",
         "api_type": "openai",
         "api_key": "NOTNEEDED"
     }
